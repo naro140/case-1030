@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CASE 1030 | ملف القضية</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Tajawal:wght@400;500;700;800&display=swap');
+
+:root {
+  --bg:#090b0e;
+  --panel:#11151b;
+  --line:#303640;
+  --red:#b33a45;
+  --text:#e5e3df;
+  --muted:#858b95;
+}
+*{box-sizing:border-box}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:'Tajawal',sans-serif;min-height:100vh;
+  background-image:radial-gradient(ellipse at top,#20202a 0%,#090b0e 65%);
+}
+header{
+  border-bottom:1px solid var(--line);padding:18px 20px;
+  display:flex;justify-content:space-between;align-items:center;
+  gap:12px;flex-wrap:wrap;
+}
+.logo{font-family:'IBM Plex Mono',monospace;letter-spacing:2px;font-size:14px}
+.status{font-size:11px;color:#d76b72;border:1px solid #6f3038;padding:7px 10px}
+main{max-width:760px;margin:auto;padding:35px 18px 65px}
+.tag{font-family:'IBM Plex Mono',monospace;color:var(--red);font-size:12px;letter-spacing:2px}
+h1{font-size:clamp(36px,8vw,64px);line-height:1.1;margin:16px 0}
+h2{font-size:25px;margin:12px 0}
+p{line-height:2}
+.muted{color:var(--muted)}
+.rule{height:1px;background:var(--line);margin:25px 0}
+.panel{background:var(--panel);border:1px solid var(--line);padding:22px;margin:18px 0}
+.warning{border-right:3px solid var(--red)}
+button{
+  font-family:inherit;font-size:15px;font-weight:700;
+  background:var(--red);color:white;border:0;padding:13px 20px;
+  cursor:pointer;margin-top:12px;width:100%;
+}
+button:disabled{background:#363b43;color:#8c9198;cursor:not-allowed}
+input{
+  width:100%;padding:14px;background:#090b0e;color:white;
+  border:1px solid #444b57;font-family:inherit;font-size:16px;
+  margin-top:12px;outline:none;
+}
+input:focus{border-color:var(--red)}
+.small{font-size:12px;color:var(--muted)}
+.code{font-family:'IBM Plex Mono',monospace;direction:ltr;text-align:left}
+.hidden{display:none!important}
+.evidence{border:1px dashed #555d68;padding:18px;margin:15px 0;background:#0b0d11}
+#feedback{min-height:28px;font-size:14px;color:#d76b72}
+footer{text-align:center;border-top:1px solid var(--line);padding:22px;color:#666;font-size:11px}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">ARCHIVE / 1030</div>
+  <div class="status">● CASE STATUS: OPEN</div>
+</header>
+
+<main>
+  <section id="intro">
+    <div class="tag">CONFIDENTIAL // FILE 001</div>
+    <h1>THE LAST<br>WISH<span style="color:var(--red)">.</span></h1>
+    <p class="muted">ملف تحقيق غير مكتمل. جميع المعلومات الواردة في هذه القضية سرية إلى حين إغلاقها.</p>
+    <div class="rule"></div>
+    <div class="panel warning">
+      <div class="tag">ASSIGNED INVESTIGATOR</div>
+      <h2>تم تعيينكِ للتحقيق</h2>
+      <p>اختفت فتاة بعد سلسلة أحداث غامضة مرتبطة بتطبيق مجهول يُقال إنه قادر على تحقيق الأمنيات.</p>
+      <p>آخر شخص ارتبط بالقضية كانت صديقتها المقرّبة.</p>
+      <p>مهمتكِ: جمع الأدلة، حل الشفرات، وإعادة بناء ما حدث.</p>
+    </div>
+    <p class="small">تنبيه: هذه قصة خيالية أُعدّت كلعبة تحقيق.</p>
+    <button onclick="startGame()">فتح ملف القضية ←</button>
+  </section>
+
+  <section id="game" class="hidden">
+    <div class="tag" id="stageTag"></div>
+    <h2 id="stageTitle"></h2>
+    <div class="rule"></div>
+    <div id="stageContent"></div>
+    <div class="panel">
+      <label id="question" for="answer"></label>
+      <input id="answer" autocomplete="off" placeholder="أدخلي الحل هنا">
+      <button id="submit" onclick="checkAnswer()">إرسال الإجابة</button>
+      <div id="feedback" aria-live="polite"></div>
+    </div>
+    <div id="waitBox" class="panel hidden">
+      <div class="tag">NEXT FILE LOCKED</div>
+      <h2>تم حفظ الدليل</h2>
+      <p>الملف التالي قيد المعالجة. عودي عندما ينتهي العد التنازلي.</p>
+      <h2 class="code" id="countdown"></h2>
+      <p class="small">لا تغلقي الصفحة إذا كنتِ تريدين متابعة العد هنا. يمكنكِ العودة لاحقًا من الجهاز نفسه.</p>
+    </div>
+  </section>
+
+  <section id="final" class="hidden">
+    <div class="tag">FINAL ARCHIVE // 1030</div>
+    <h1>CASE<br>CLOSED<span style="color:var(--red)">.</span></h1>
+    <div class="panel warning">
+      <h2>الرسالة الأخيرة</h2>
+      <p>بين ملفات القضية، عُثر على ظرف لم يُفتح منذ اليوم الذي بدأت فيه الأحداث.</p>
+      <p>على الظرف تاريخ مكتوب بخط اليد. كان من المفترض أن تصل هذه الرسالة إلى صديقتها في يومٍ خاص بهما.</p>
+      <div class="evidence">
+        <div class="tag">ENVELOPE FOUND</div>
+        <h2 class="code">TO MY BEST FRIEND</h2>
+        <h2 id="friendDate" style="color:var(--red)">30 OCTOBER</h2>
+        <p class="muted">لم تُسلّم الرسالة قط.</p>
+      </div>
+      <p>كانت الفتاتان تظنان أن الأخرى ابتعدت ولم تعد تريد هذه الصداقة. لكن الأدلة كشفت أن كل واحدة منهما بنت حكمها على افتراضات لم تتأكد منها.</p>
+      <p>الفضيحة، وسوء الفهم، والتطبيق الغامض… كلها بدأت عندما لم تسأل إحداهما الأخرى عن الحقيقة.</p>
+      <p>لم تكن كل الأدلة تقول إنهما تكرهان بعضهما؛ بعضها كان يقول إنهما لم تفهما بعضهما أصلًا.</p>
+      <button onclick="revealLetter()">فتح الرسالة</button>
+      <div id="letter" class="hidden evidence">
+        <div class="tag">PRIVATE LETTER</div>
+        <p>إلى صديقتي،</p>
+        <p>كنت أجهز لكِ هذه الرسالة عشان أعطيكِ إياها في يومنا، وما كنت أتخيل إن أشياء كثيرة ممكن تتغير قبل ما يجي.</p>
+        <p>لو رجع فيني الوقت، كان سألتك بدل ما أفسر سكوتك بطريقتي، وكان تمنيت إنك تسأليني بعد.</p>
+        <p>يمكن أكثر شيء يوجع في سوء الفهم إن كل وحدة تظل تتذكر الثانية، لكنها ما تعرف وش اللي يدور في بالها فعلًا.</p>
+        <p>كنت أتمنى إننا نتكلم قبل ما نخسر كل هالأشياء اللي بيننا.</p>
+        <p>بعض الكلام يتأخر، وبعض الرسائل توصل بعد وقتها… لكن هذا ما يغير إنها كانت مكتوبة من القلب.</p>
+        <p>— إلى الشخص اللي كان يومًا أقرب شخص لي.</p>
+      </div>
+    </div>
+    <p class="small">انتهى الملف. جميع الشخصيات والأحداث خيالية.</p>
+  </section>
+</main>
+
+<footer>ARCHIVE 1030 — ALL FILES ARE FICTIONAL</footer>
+
+<script>
+const FINAL_DATE = new Date("2026-10-30T00:00:00+03:00").getTime();
+const STAGES = [
+ {
+  title:"الدليل الأول: تاريخ مجهول",
+  content:'<div class="evidence"><div class="tag">EVIDENCE 01</div><p>عُثر على ملاحظة بجانب جهاز الحاسوب الخاص بصاحبة التطبيق:</p><h2 class="code">30 / 10</h2><p>وتحت التاريخ كُتبت العبارة: «اليوم الذي بدأ فيه كل شيء».</p></div>',
+  question:"ما التاريخ المكتوب في الدليل؟ اكتبيه بالأرقام دون مسافات.",
+  answers:["3010","30/10","30-10","3010"]
+ },
+ {
+  title:"الدليل الثاني: رسالة مبتورة",
+  content:'<div class="evidence"><div class="tag">EVIDENCE 02</div><p>عُثر على مسودة رسالة لم تُرسل:</p><p>«أنا ما ابتعدت عنك لأني ما أبيك بحياتي… أنا بس كنت ______».</p><p class="muted">يبدو أن الكلمة الأخيرة حُذفت من النسخة المسترجعة.</p></div>',
+  question:"ما الكلمة المفقودة؟ تلميح: شعور يخلي الشخص يتردد في الكلام.",
+  answers:["خايفة","خائفة","خايفه","مترددة","متردده"]
+ },
+ {
+  title:"الدليل الثالث: سجل التطبيق",
+  content:'<div class="evidence"><div class="tag">EVIDENCE 03</div><p>في سجل التطبيق، ظهرت أمنية لم تُكتب كاملة:</p><p>«أتمنى لو أنها فقط ______ وسألتني بدل ما تصدق كل شيء».</p><p class="muted">الأمنية تشير إلى ما كان يجب أن يحدث قبل تفاقم الأزمة.</p></div>',
+  question:"ما التصرف الذي كان من الممكن أن يمنع سوء الفهم؟",
+  answers:["تسألني","تسأل","السؤال","تواجهني","تكلمني","تكلمني"]
+ },
+ {
+  title:"الدليل الرابع: الحقيقة",
+  content:'<div class="evidence"><div class="tag">EVIDENCE 04</div><p>آخر تقرير يضم عبارتين من الفتاتين:</p><p>الأولى: «ظننت أنها لم تعد تريدني».</p><p>الثانية: «ظننت أنها تكرهني بعد ما حدث».</p><p>لم توجد رسالة تؤكد أن أيًا منهما سألت الأخرى عن الحقيقة.</p></div>',
+  question:"ما السبب الأساسي للأزمة؟ اكتبي الإجابة بكلمتين.",
+  answers:["سوء فهم","سوءالفهم","سوء الفهم","عدم التواصل","قلة التواصل"]
+ }
+];
+
+let stage = 0;
+let timer = null;
+let unlockAt = 0;
+const DELAY = 60 * 1000;
+
+function startGame(){
+ document.getElementById("intro").classList.add("hidden");
+ document.getElementById("game").classList.remove("hidden");
+ stage = Number(localStorage.getItem("case1030stage") || 0);
+ unlockAt = Number(localStorage.getItem("case1030unlock") || 0);
+ if(Date.now() >= FINAL_DATE && stage >= STAGES.length){
+   showFinal(); return;
+ }
+ renderStage();
+}
+
+function renderStage(){
+ if(stage >= STAGES.length){
+   document.getElementById("stageTag").textContent = "FINAL FILE";
+   document.getElementById("stageTitle").textContent = "تم جمع الأدلة";
+   document.getElementById("stageContent").innerHTML =
+    '<div class="panel"><p>انتهيتِ من جمع الأدلة. الملف الأخير سيُفتح في الموعد المحدد.</p></div>';
+   document.querySelector("#game .panel:last-of-type").classList.add("hidden");
+   document.getElementById("waitBox").classList.remove("hidden");
+   tick();
+   return;
+ }
+ document.getElementById("waitBox").classList.add("hidden");
+ document.getElementById("stageTag").textContent = "EVIDENCE FILE 0" + (stage+1);
+ document.getElementById("stageTitle").textContent = STAGES[stage].title;
+ document.getElementById("stageContent").innerHTML = STAGES[stage].content;
+ document.getElementById("question").textContent = STAGES[stage].question;
+ document.getElementById("answer").value = "";
+ document.getElementById("feedback").textContent = "";
+ document.getElementById("submit").disabled = false;
+ if(unlockAt > Date.now()){
+   document.getElementById("stageContent").classList.add("hidden");
+   document.getElementById("question").parentElement.classList.add("hidden");
+   document.getElementById("waitBox").classList.remove("hidden");
+   tick();
+ } else {
+   document.getElementById("stageContent").classList.remove("hidden");
+   document.getElementById("question").parentElement.classList.remove("hidden");
+ }
+}
+
+function normalize(s){
+ return s.toLowerCase().replace(/[ًٌٍَُِّْـ\s.,،!؟/-]/g,"").trim();
+}
+
+function checkAnswer(){
+ const value = normalize(document.getElementById("answer").value);
+ const correct = STAGES[stage].answers.some(a => normalize(a) === value);
+ if(!value){
+   document.getElementById("feedback").textContent = "اكتبي إجابتك أولًا.";
+   return;
+ }
+ if(!correct){
+   document.getElementById("feedback").textContent = "الإجابة غير صحيحة. راجعي الأدلة وحاولي مرة أخرى.";
+   return;
+ }
+ stage++;
+ localStorage.setItem("case1030stage",stage);
+ unlockAt = Date.now() + DELAY;
+ localStorage.setItem("case1030unlock",unlockAt);
+ renderStage();
+}
+
+function tick(){
+ clearInterval(timer);
+ function update(){
+   const now = Date.now();
+   const game = document.getElementById("game");
+   if(stage >= STAGES.length){
+     const left = FINAL_DATE - now;
+     if(left <= 0){ showFinal(); return; }
+     document.getElementById("countdown").textContent = format(left);
+     return;
+   }
+   const left = unlockAt - now;
+   if(left <= 0){
+     renderStage();
+     return;
+   }
+   document.getElementById("countdown").textContent = format(left);
+ }
+ update();
+ timer = setInterval(update,1000);
+}
+
+function format(ms){
+ const sec = Math.max(0,Math.floor(ms/1000));
+ const d = Math.floor(sec/86400);
+ const h = Math.floor(sec%86400/3600);
+ const m = Math.floor(sec%3600/60);
+ const s = sec%60;
+ return [d+"d",h+"h",m+"m",s+"s"].join(" : ");
+}
+
+function showFinal(){
+ clearInterval(timer);
+ document.getElementById("intro").classList.add("hidden");
+ document.getElementById("game").classList.add("hidden");
+ document.getElementById("final").classList.remove("hidden");
+ document.querySelector("header .status").textContent = "● CASE STATUS: CLOSED";
+}
+
+function revealLetter(){
+ document.getElementById("letter").classList.remove("hidden");
+}
+
+if(Date.now() >= FINAL_DATE && Number(localStorage.getItem("case1030stage")||0) >= STAGES.length){
+ document.getElementById("intro").querySelector("button").textContent = "استكمال التحقيق";
+}
+</script>
+</body>
+</html>
