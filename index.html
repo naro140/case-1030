@@ -2,281 +2,265 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CASE 1030 | ملف القضية</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b12">
+<title>CASE 1030 | ملف أمني</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;700&family=Tajawal:wght@400;500;700;800&display=swap');
-
-:root {
-  --bg:#090b0e;
-  --panel:#11151b;
-  --line:#303640;
-  --red:#b33a45;
-  --text:#e5e3df;
-  --muted:#858b95;
-}
+:root{--bg:#090a10;--panel:#11131d;--line:#303343;--red:#c52f4b;--cream:#eee8df;--muted:#9a9cac;--gold:#c8a96b;--green:#70d6a4}
 *{box-sizing:border-box}
-body{
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:'Tajawal',sans-serif;min-height:100vh;
-  background-image:radial-gradient(ellipse at top,#20202a 0%,#090b0e 65%);
-}
-header{
-  border-bottom:1px solid var(--line);padding:18px 20px;
-  display:flex;justify-content:space-between;align-items:center;
-  gap:12px;flex-wrap:wrap;
-}
-.logo{font-family:'IBM Plex Mono',monospace;letter-spacing:2px;font-size:14px}
-.status{font-size:11px;color:#d76b72;border:1px solid #6f3038;padding:7px 10px}
-main{max-width:760px;margin:auto;padding:35px 18px 65px}
-.tag{font-family:'IBM Plex Mono',monospace;color:var(--red);font-size:12px;letter-spacing:2px}
-h1{font-size:clamp(36px,8vw,64px);line-height:1.1;margin:16px 0}
-h2{font-size:25px;margin:12px 0}
-p{line-height:2}
-.muted{color:var(--muted)}
-.rule{height:1px;background:var(--line);margin:25px 0}
-.panel{background:var(--panel);border:1px solid var(--line);padding:22px;margin:18px 0}
-.warning{border-right:3px solid var(--red)}
-button{
-  font-family:inherit;font-size:15px;font-weight:700;
-  background:var(--red);color:white;border:0;padding:13px 20px;
-  cursor:pointer;margin-top:12px;width:100%;
-}
-button:disabled{background:#363b43;color:#8c9198;cursor:not-allowed}
-input{
-  width:100%;padding:14px;background:#090b0e;color:white;
-  border:1px solid #444b57;font-family:inherit;font-size:16px;
-  margin-top:12px;outline:none;
-}
-input:focus{border-color:var(--red)}
-.small{font-size:12px;color:var(--muted)}
-.code{font-family:'IBM Plex Mono',monospace;direction:ltr;text-align:left}
+html{scroll-behavior:smooth}
+body{margin:0;background:radial-gradient(ellipse at top,#1b1722 0,#090a10 55%);color:var(--cream);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;min-height:100vh}
+.wrap{width:min(920px,100%);margin:auto;padding:22px 16px 60px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:16px;margin-bottom:22px}
+.brand{display:flex;align-items:center;gap:11px}
+.stamp{border:1px solid var(--red);color:#ff526c;font-weight:900;font-size:12px;padding:9px 8px;transform:rotate(-5deg);border-radius:4px}
+.brand strong{display:block;letter-spacing:2px;font-size:14px}
+.brand small{color:var(--muted);font-size:11px}
+.pill{font-size:11px;color:var(--gold);border:1px solid #594a31;border-radius:99px;padding:7px 10px}
+.hero{padding:24px 0 20px}
+.eyebrow{color:#ff526c;font-size:11px;letter-spacing:2px;font-weight:800}
+.hero h1{font-size:clamp(31px,7vw,56px);line-height:1.1;margin:12px 0}
+.hero h1 span{color:#ff526c}
+.hero p{color:#c0c1cb;line-height:1.9;font-size:14px}
+.warning{display:flex;gap:12px;background:#24131a;border:1px solid #65303d;border-right:4px solid var(--red);padding:13px 14px;border-radius:8px;margin:20px 0}
+.warning b{color:#ff9aa9;display:block;font-size:12px;margin-bottom:4px}
+.warning p{margin:0;color:#d8c4c8;font-size:12px;line-height:1.7}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin:22px 0}
+.stat{background:#10121a;border:1px solid var(--line);padding:12px;border-radius:8px}
+.stat small{display:block;color:var(--muted);font-size:10px;margin-bottom:6px}
+.stat b{font-size:13px}
+.card{background:linear-gradient(145deg,rgba(24,26,39,.97),rgba(13,14,22,.97));border:1px solid var(--line);border-radius:13px;padding:clamp(16px,4vw,26px);margin:16px 0;box-shadow:0 18px 50px #0003}
+.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:17px}
+.card-head h2{font-size:18px;margin:0}
+.case-no{font-size:10px;color:#ff526c;border:1px solid #68313d;padding:6px 8px;border-radius:4px}
+.clue-title{display:flex;gap:12px;align-items:center;margin:12px 0}
+.clue-icon{width:44px;height:44px;border-radius:10px;background:#291720;border:1px solid #633040;display:grid;place-items:center;font-size:23px;flex-shrink:0}
+.clue-title h3{margin:0;font-size:16px}
+.clue-title small{color:var(--muted);font-size:11px}
+.paper{background:#e8e0d2;color:#24212a;padding:17px 18px;border-radius:4px;position:relative;box-shadow:4px 5px 0 #0004;margin:16px 0}
+.paper:before{content:"EVIDENCE / دليل";position:absolute;left:12px;top:10px;font-size:9px;letter-spacing:1px;color:#a72b40;font-weight:900;border:1px solid #a72b40;padding:3px 5px;transform:rotate(-7deg)}
+.paper p{line-height:1.9;font-size:14px;margin:22px 0 5px}
+.paper .scribble{font-family:Georgia,serif;font-style:italic;font-size:18px}
+.quote{border-right:3px solid var(--red);padding:7px 12px;color:#ddd3d6;line-height:1.9;background:#17131b;border-radius:3px;margin:16px 0;font-size:14px}
+input[type=text]{width:100%;background:#090b12;color:var(--cream);border:1px solid #414454;border-radius:8px;padding:14px;font-size:16px;outline:none;margin:8px 0 10px}
+input[type=text]:focus{border-color:#ff526c;box-shadow:0 0 0 3px #c52f4b22}
+.actions{display:flex;gap:9px;flex-wrap:wrap}
+.btn{border:0;border-radius:8px;padding:12px 17px;font-weight:800;font-size:13px;cursor:pointer}
+.primary{background:var(--red);color:white}
+.secondary{background:#202331;color:#e7e7ed;border:1px solid #424557}
+.btn:disabled{opacity:.55;cursor:not-allowed}
+.feedback{min-height:22px;font-size:12px;margin-top:10px;color:var(--muted)}
+.feedback.good{color:var(--green)}
+.feedback.bad{color:#ff8a9b}
+.lock{color:var(--gold);background:#201c15;border:1px solid #4a3e28;padding:12px;border-radius:8px;font-size:12px;line-height:1.7;margin-top:15px}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.evidence{border:1px solid var(--line);background:#10121b;border-radius:9px;padding:14px;text-align:right;cursor:pointer;color:var(--cream);min-height:100px}
+.evidence .mini{font-size:22px;display:block;margin-bottom:9px}
+.evidence b{display:block;font-size:12px}
+.evidence small{color:var(--muted);font-size:10px}
+.progress{height:5px;background:#252735;border-radius:9px;overflow:hidden;margin:16px 0}
+.progress span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),#ff526c);transition:width .4s}
 .hidden{display:none!important}
-.evidence{border:1px dashed #555d68;padding:18px;margin:15px 0;background:#0b0d11}
-#feedback{min-height:28px;font-size:14px;color:#d76b72}
-footer{text-align:center;border-top:1px solid var(--line);padding:22px;color:#666;font-size:11px}
+.center{text-align:center}
+.big-icon{font-size:46px}
+.letter{background:#f0e6d4;color:#30252a;border-radius:4px;padding:24px 20px;margin:18px 0;box-shadow:0 10px 30px #0005}
+.letter h3{text-align:center;font-family:Georgia,serif;letter-spacing:2px}
+.letter p{line-height:2;font-size:15px;white-space:pre-line}
+.letter .sign{font-family:Georgia,serif;font-style:italic;text-align:left;margin-top:24px}
+footer{border-top:1px solid var(--line);padding-top:18px;color:#777b8c;font-size:10px;text-align:center;line-height:1.8;margin-top:28px}
+@media(max-width:560px){.stats{grid-template-columns:1fr 1fr}.stats .stat:last-child{grid-column:span 2}.grid{grid-template-columns:1fr}.top{align-items:flex-start;flex-wrap:wrap}.hero{padding-top:12px}}
 </style>
 </head>
 <body>
-<header>
-  <div class="logo">ARCHIVE / 1030</div>
-  <div class="status">● CASE STATUS: OPEN</div>
+<div class="wrap">
+<header class="top">
+  <div class="brand"><div class="stamp">CASE<br>1030</div><div><strong>ARCHIVE // 1030</strong><small>وحدة التحقيق في الحوادث الغامضة</small></div></div>
+  <div class="pill">ملف سري · مستوى الوصول 03</div>
 </header>
 
-<main>
-  <section id="intro">
-    <div class="tag">CONFIDENTIAL // FILE 001</div>
-    <h1>THE LAST<br>WISH<span style="color:var(--red)">.</span></h1>
-    <p class="muted">ملف تحقيق غير مكتمل. جميع المعلومات الواردة في هذه القضية سرية إلى حين إغلاقها.</p>
-    <div class="rule"></div>
-    <div class="panel warning">
-      <div class="tag">ASSIGNED INVESTIGATOR</div>
-      <h2>تم تعيينكِ للتحقيق</h2>
-      <p>اختفت فتاة بعد سلسلة أحداث غامضة مرتبطة بتطبيق مجهول يُقال إنه قادر على تحقيق الأمنيات.</p>
-      <p>آخر شخص ارتبط بالقضية كانت صديقتها المقرّبة.</p>
-      <p>مهمتكِ: جمع الأدلة، حل الشفرات، وإعادة بناء ما حدث.</p>
-    </div>
-    <p class="small">تنبيه: هذه قصة خيالية أُعدّت كلعبة تحقيق.</p>
-    <button onclick="startGame()">فتح ملف القضية ←</button>
-  </section>
+<section class="hero">
+  <div class="eyebrow">UNSOLVED CASE / 01</div>
+  <h1>بعض الأمنيات<br><span>لا يجب أن تتحقق.</span></h1>
+  <p>اختفى كل شيء خلف رسالة واحدة. صداقة قديمة، تطبيق مجهول، وأمنية لم يكن من المفترض أن تُقال. أنتِ المحققة الآن؛ اجمعي الأدلة، اربطي التواريخ، واكتشفي ما الذي حدث فعلًا.</p>
+  <div class="warning"><div>!</div><div><b>تنبيه من أرشيف القضية</b><p>بعض الملفات غير مكتملة. لا تثقي بأول رواية تسمعينها؛ كل دليل قد يغيّر معنى الدليل الذي قبله.</p></div></div>
+  <div class="stats"><div class="stat"><small>رقم القضية</small><b>1030-A</b></div><div class="stat"><small>الحالة</small><b id="statusText">مفتوحة للتحقيق</b></div><div class="stat"><small>الأدلة المكتشفة</small><b id="progressText">0 / 4</b></div></div>
+</section>
 
-  <section id="game" class="hidden">
-    <div class="tag" id="stageTag"></div>
-    <h2 id="stageTitle"></h2>
-    <div class="rule"></div>
-    <div id="stageContent"></div>
-    <div class="panel">
-      <label id="question" for="answer"></label>
-      <input id="answer" autocomplete="off" placeholder="أدخلي الحل هنا">
-      <button id="submit" onclick="checkAnswer()">إرسال الإجابة</button>
-      <div id="feedback" aria-live="polite"></div>
-    </div>
-    <div id="waitBox" class="panel hidden">
-      <div class="tag">NEXT FILE LOCKED</div>
-      <h2>تم حفظ الدليل</h2>
-      <p>الملف التالي قيد المعالجة. عودي عندما ينتهي العد التنازلي.</p>
-      <h2 class="code" id="countdown"></h2>
-      <p class="small">لا تغلقي الصفحة إذا كنتِ تريدين متابعة العد هنا. يمكنكِ العودة لاحقًا من الجهاز نفسه.</p>
-    </div>
-  </section>
+<section class="card" id="intro">
+  <div class="card-head"><h2>ابدئي التحقيق</h2><span class="case-no">ACCESS GRANTED</span></div>
+  <p style="color:#c0c1cb;line-height:1.9;font-size:14px">في البداية كان التطبيق مجرد تجربة بين صديقتين. تطبيق يَعِد بتحقيق الأمنيات. ثم حدث خلاف، وانتشرت أسرار لم يكن يجب أن تخرج إلى العلن. وبعدها ظهرت قاعدة واحدة في سجل التطبيق: <b style="color:#ff8a9b">كل أمنية غير محققة لها ثمن.</b></p>
+  <button class="btn primary" id="startBtn">فتح أول دليل ←</button>
+</section>
 
-  <section id="final" class="hidden">
-    <div class="tag">FINAL ARCHIVE // 1030</div>
-    <h1>CASE<br>CLOSED<span style="color:var(--red)">.</span></h1>
-    <div class="panel warning">
-      <h2>الرسالة الأخيرة</h2>
-      <p>بين ملفات القضية، عُثر على ظرف لم يُفتح منذ اليوم الذي بدأت فيه الأحداث.</p>
-      <p>على الظرف تاريخ مكتوب بخط اليد. كان من المفترض أن تصل هذه الرسالة إلى صديقتها في يومٍ خاص بهما.</p>
-      <div class="evidence">
-        <div class="tag">ENVELOPE FOUND</div>
-        <h2 class="code">TO MY BEST FRIEND</h2>
-        <h2 id="friendDate" style="color:var(--red)">30 OCTOBER</h2>
-        <p class="muted">لم تُسلّم الرسالة قط.</p>
-      </div>
-      <p>كانت الفتاتان تظنان أن الأخرى ابتعدت ولم تعد تريد هذه الصداقة. لكن الأدلة كشفت أن كل واحدة منهما بنت حكمها على افتراضات لم تتأكد منها.</p>
-      <p>الفضيحة، وسوء الفهم، والتطبيق الغامض… كلها بدأت عندما لم تسأل إحداهما الأخرى عن الحقيقة.</p>
-      <p>لم تكن كل الأدلة تقول إنهما تكرهان بعضهما؛ بعضها كان يقول إنهما لم تفهما بعضهما أصلًا.</p>
-      <button onclick="revealLetter()">فتح الرسالة</button>
-      <div id="letter" class="hidden evidence">
-        <div class="tag">PRIVATE LETTER</div>
-        <p>إلى صديقتي،</p>
-        <p>كنت أجهز لكِ هذه الرسالة عشان أعطيكِ إياها في يومنا، وما كنت أتخيل إن أشياء كثيرة ممكن تتغير قبل ما يجي.</p>
-        <p>لو رجع فيني الوقت، كان سألتك بدل ما أفسر سكوتك بطريقتي، وكان تمنيت إنك تسأليني بعد.</p>
-        <p>يمكن أكثر شيء يوجع في سوء الفهم إن كل وحدة تظل تتذكر الثانية، لكنها ما تعرف وش اللي يدور في بالها فعلًا.</p>
-        <p>كنت أتمنى إننا نتكلم قبل ما نخسر كل هالأشياء اللي بيننا.</p>
-        <p>بعض الكلام يتأخر، وبعض الرسائل توصل بعد وقتها… لكن هذا ما يغير إنها كانت مكتوبة من القلب.</p>
-        <p>— إلى الشخص اللي كان يومًا أقرب شخص لي.</p>
-      </div>
-    </div>
-    <p class="small">انتهى الملف. جميع الشخصيات والأحداث خيالية.</p>
-  </section>
-</main>
+<section class="card hidden" id="gameCard">
+  <div class="card-head"><h2 id="stageHeading">الدليل 01 — سجل التطبيق</h2><span class="case-no" id="stageNumber">EVIDENCE 01</span></div>
+  <div class="progress"><span id="progressBar"></span></div>
+  <div id="stageContent"></div>
+  <label for="answerInput" style="font-size:12px;color:#c4c5cf;font-weight:700" id="answerLabel">اكتبي الإجابة أو الرمز</label>
+  <input id="answerInput" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="اكتبي هنا...">
+  <div class="actions"><button class="btn primary" id="checkBtn">تحليل الدليل</button><button class="btn secondary" id="hintBtn">تلميح</button><button class="btn secondary" id="soundBtn">♫ الصوت: تشغيل</button></div>
+  <div class="feedback" id="feedback" aria-live="polite"></div>
+  <div class="lock hidden" id="waitBox"> <span id="waitText">الدليل التالي قيد المعالجة.</span></div>
+</section>
 
-<footer>ARCHIVE 1030 — ALL FILES ARE FICTIONAL</footer>
+<section class="card hidden" id="evidenceCard">
+  <div class="card-head"><h2>لوحة الأدلة</h2><span class="case-no">EVIDENCE BOARD</span></div>
+  <p style="color:var(--muted);font-size:12px">اضغطي على أي ملف لإعادة قراءة ما اكتشفتيه.</p>
+  <div class="grid" id="evidenceGrid"></div>
+</section>
+
+<section class="card hidden" id="finalCard">
+  <div class="card-head"><h2>تم إغلاق القضية</h2><span class="case-no">CASE REVEALED</span></div>
+  <div class="center"><div class="big-icon">✉</div><h2>الملف الأخير: رسالة لم تصل</h2><p style="color:#bfc0ca;line-height:1.9;font-size:13px">لم تكن اللعنة هي الحقيقة كاملة. الحقيقة كانت في شيء أبسط، وأصعب: كلام لم يُشرح، وخوف فُهم على أنه ابتعاد.</p></div>
+  <div class="letter"><h3>TO MY PERSON</h3><p>إلى صديقتي،
+
+إذا وصلتك هالرسالة، فهذا يعني إنك وصلتي لنهاية القضية. يمكن كل اللي صار بدأ من سوء فهم، من لحظة خفنا فيها نسأل بعض عن الحقيقة، وصدقنا أسوأ احتمال.
+
+كنت أبي أعطيك هالرسالة بذكرى صداقتنا، وأقول لك إن وجودك بحياتي مو شيء عابر، وإن كل ذكرى بيننا لها مكانها.
+
+شكرًا لأنك كنتِ جزءًا من أيامي، ولأن صداقتنا تستحق إننا نفهم بعض قبل ما نحكم.
+
+وهذي مو نهاية القضية الحقيقية؛ هذي بس نهاية اللعبة.</p><div class="sign">— من صديقتك، دائمًا</div></div>
+  <p style="font-size:11px;color:var(--muted);text-align:center">تقدرين تعدّلين نص الرسالة لاحقًا وتكتبين كلامك الخاص.</p>
+  <button class="btn secondary" id="restartBtn">إعادة التحقيق من البداية</button>
+</section>
+<footer>CASE 1030 · ملف خيالي صُمّم كتجربة تفاعلية خاصة · لا توجد بيانات تُرسل إلى أي جهة</footer>
+</div>
 
 <script>
-const FINAL_DATE = new Date("2026-10-30T00:00:00+03:00").getTime();
-const STAGES = [
- {
-  title:"الدليل الأول: تاريخ مجهول",
-  content:'<div class="evidence"><div class="tag">EVIDENCE 01</div><p>عُثر على ملاحظة بجانب جهاز الحاسوب الخاص بصاحبة التطبيق:</p><h2 class="code">30 / 10</h2><p>وتحت التاريخ كُتبت العبارة: «اليوم الذي بدأ فيه كل شيء».</p></div>',
-  question:"ما التاريخ المكتوب في الدليل؟ اكتبيه بالأرقام دون مسافات.",
-  answers:["3010","30/10","30-10","3010"]
- },
- {
-  title:"الدليل الثاني: رسالة مبتورة",
-  content:'<div class="evidence"><div class="tag">EVIDENCE 02</div><p>عُثر على مسودة رسالة لم تُرسل:</p><p>«أنا ما ابتعدت عنك لأني ما أبيك بحياتي… أنا بس كنت ______».</p><p class="muted">يبدو أن الكلمة الأخيرة حُذفت من النسخة المسترجعة.</p></div>',
-  question:"ما الكلمة المفقودة؟ تلميح: شعور يخلي الشخص يتردد في الكلام.",
-  answers:["خايفة","خائفة","خايفه","مترددة","متردده"]
- },
- {
-  title:"الدليل الثالث: سجل التطبيق",
-  content:'<div class="evidence"><div class="tag">EVIDENCE 03</div><p>في سجل التطبيق، ظهرت أمنية لم تُكتب كاملة:</p><p>«أتمنى لو أنها فقط ______ وسألتني بدل ما تصدق كل شيء».</p><p class="muted">الأمنية تشير إلى ما كان يجب أن يحدث قبل تفاقم الأزمة.</p></div>',
-  question:"ما التصرف الذي كان من الممكن أن يمنع سوء الفهم؟",
-  answers:["تسألني","تسأل","السؤال","تواجهني","تكلمني","تكلمني"]
- },
- {
-  title:"الدليل الرابع: الحقيقة",
-  content:'<div class="evidence"><div class="tag">EVIDENCE 04</div><p>آخر تقرير يضم عبارتين من الفتاتين:</p><p>الأولى: «ظننت أنها لم تعد تريدني».</p><p>الثانية: «ظننت أنها تكرهني بعد ما حدث».</p><p>لم توجد رسالة تؤكد أن أيًا منهما سألت الأخرى عن الحقيقة.</p></div>',
-  question:"ما السبب الأساسي للأزمة؟ اكتبي الإجابة بكلمتين.",
-  answers:["سوء فهم","سوءالفهم","سوء الفهم","عدم التواصل","قلة التواصل"]
- }
+const stages = [
+ {title:"سجل التطبيق",label:"رمز الوصول",placeholder:"اكتبي الرمز...",hint:"التاريخ المكتوب على ملف القضية: 30 أكتوبر. جرّبي كتابته بالأرقام.",answers:["1030","30","3010","30 اكتوبر","30 أكتوبر"],html:`<div class="clue-title"><div class="clue-icon">▣</div><div><h3>ملف النظام — Wish.exe</h3><small>آخر تحديث: 30 / 10 · المصدر: جهاز غير معروف</small></div></div><div class="paper"><p class="scribble">“كل أمنية تُسجّل. كل وعد يُحفظ. لا يمكن حذف ما تم طلبه.”</p><p>وجد فريق التحقيق تاريخًا يتكرر في ملفات التطبيق. أدخلي الرمز المرتبط بتاريخ القضية لفتح السجل التالي.</p></div><div class="quote">ملاحظة: لا توجد أسماء ظاهرة في سجل المستخدمين، فقط حرفان: <b>N</b> و <b>R</b>.</div>`},
+ {title:"رسالة غير مكتملة",label:"الكلمة الناقصة",placeholder:"اكتبي الكلمة...",hint:"الكلمة تصف شعورًا يمنع شخصًا من قول الحقيقة.",answers:["خايفة","خائفة","الخوف","خايفه"],html:`<div class="clue-title"><div class="clue-icon">✉</div><div><h3>لقطة من محادثة محذوفة</h3><small>المصدر: نسخة احتياطية · 02:17 AM</small></div></div><div class="paper"><p>“أنا ما ابتعدت عنك لأني ما أبيك بحياتي… أنا بس كنت ______.”</p><p style="font-size:11px;color:#6c6065">[بقية الرسالة مفقودة — استعادة جزئية فقط]</p></div><div class="quote">تقرير المحقق: قد لا يكون الصمت دليل كراهية. أحيانًا يكون دليل خوف من خسارة الشخص نفسه.</div>`},
+ {title:"الأمنية الأولى",label:"ما الذي بدأ اللعنة؟",placeholder:"اكتبي إجابتك...",hint:"شيء طلبته إحدى الصديقتين من التطبيق، على أمل أن يتغير ما بينهما.",answers:["امنية","أمنية","الامنية","الأمنية","تحقيق امنية","تحقيق أمنية","wish"],html:`<div class="clue-title"><div class="clue-icon">✧</div><div><h3>تسجيل صوتي تالف</h3><small>المدة: 00:07 · تم تحويله إلى نص</small></div></div><div class="paper"><p class="scribble">“لو بس أقدر أتمنى شيء واحد… أتمنى إنها تعرف الحقيقة.”</p><p>بعد هذه العبارة مباشرة، بدأ التطبيق يسجل أحداثًا لا يمكن تفسيرها. لم تكن المشكلة في التطبيق وحده، بل في الأمنية التي كُتبت داخله.</p></div><div class="quote">قاعدة مسجلة في النظام: الأمنيات التي لا تتحقق تترك أثرًا على صاحبها. تفاصيل الأثر محجوبة.</div>`},
+ {title:"الملف الأخير",label:"ماذا كان ينقصهما؟",placeholder:"اكتبي الإجابة...",hint:"شيء كان ممكنًا أن ينهي الخلاف قبل أن يبدأ: سؤال صريح بدل الافتراض.",answers:["الحقيقة","التفاهم","الكلام","التواصل","سؤال","المصارحة","الصدق"],html:`<div class="clue-title"><div class="clue-icon">⌕</div><div><h3>ملاحظة بخط اليد</h3><small>عُثر عليها داخل غلاف ملف قديم</small></div></div><div class="paper"><p>“لو سألتني بدل ما تفترضين، كنت بقول لك كل شيء. ما كان قصدي أبتعد. كنت أبحث عن طريقة أشرح لك فيها.”</p><p style="font-size:11px;color:#6c6065">— من دون توقيع</p></div><div class="quote">آخر سؤال في التحقيق: ما الشيء الذي كان يمكن أن يغيّر كل شيء لو حدث في الوقت المناسب؟</div>`}
 ];
 
-let stage = 0;
-let timer = null;
-let unlockAt = 0;
-const DELAY = 60 * 1000;
+let stage=0, solved=[], timer=null, soundOn=true, audioCtx=null;
+const $=id=>document.getElementById(id);
 
-function startGame(){
- document.getElementById("intro").classList.add("hidden");
- document.getElementById("game").classList.remove("hidden");
- stage = Number(localStorage.getItem("case1030stage") || 0);
- unlockAt = Number(localStorage.getItem("case1030unlock") || 0);
- if(Date.now() >= FINAL_DATE && stage >= STAGES.length){
-   showFinal(); return;
- }
- renderStage();
+function beep(freq=520,duration=.09,type="sine"){
+ if(!soundOn)return;
+ try{
+  audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==="suspended")audioCtx.resume();
+  const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+  o.type=type;o.frequency.value=freq;
+  g.gain.setValueAtTime(.045,audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);
+  o.connect(g);g.connect(audioCtx.destination);
+  o.start();o.stop(audioCtx.currentTime+duration);
+ }catch(e){}
 }
-
+function updateStats(){
+ $("progressText").textContent=`${solved.length} / ${stages.length}`;
+ $("progressBar").style.width=`${solved.length/stages.length*100}%`;
+ $("statusText").textContent=solved.length===stages.length?"تم حل القضية":"مفتوحة للتحقيق";
+}
 function renderStage(){
- if(stage >= STAGES.length){
-   document.getElementById("stageTag").textContent = "FINAL FILE";
-   document.getElementById("stageTitle").textContent = "تم جمع الأدلة";
-   document.getElementById("stageContent").innerHTML =
-    '<div class="panel"><p>انتهيتِ من جمع الأدلة. الملف الأخير سيُفتح في الموعد المحدد.</p></div>';
-   document.querySelector("#game .panel:last-of-type").classList.add("hidden");
-   document.getElementById("waitBox").classList.remove("hidden");
-   tick();
-   return;
- }
- document.getElementById("waitBox").classList.add("hidden");
- document.getElementById("stageTag").textContent = "EVIDENCE FILE 0" + (stage+1);
- document.getElementById("stageTitle").textContent = STAGES[stage].title;
- document.getElementById("stageContent").innerHTML = STAGES[stage].content;
- document.getElementById("question").textContent = STAGES[stage].question;
- document.getElementById("answer").value = "";
- document.getElementById("feedback").textContent = "";
- document.getElementById("submit").disabled = false;
- if(unlockAt > Date.now()){
-   document.getElementById("stageContent").classList.add("hidden");
-   document.getElementById("question").parentElement.classList.add("hidden");
-   document.getElementById("waitBox").classList.remove("hidden");
-   tick();
- } else {
-   document.getElementById("stageContent").classList.remove("hidden");
-   document.getElementById("question").parentElement.classList.remove("hidden");
- }
+ clearInterval(timer);
+ const s=stages[stage];
+ $("stageHeading").textContent=`الدليل ${String(stage+1).padStart(2,"0")} — ${s.title}`;
+ $("stageNumber").textContent=`EVIDENCE ${String(stage+1).padStart(2,"0")}`;
+ $("stageContent").innerHTML=s.html;
+ $("answerLabel").textContent=s.label;
+ $("answerInput").value="";
+ $("answerInput").placeholder=s.placeholder;
+ $("feedback").textContent="";
+ $("feedback").className="feedback";
+ $("waitBox").classList.add("hidden");
+ $("checkBtn").disabled=false;
+ $("answerInput").disabled=false;
+ $("hintBtn").disabled=false;
+ updateStats();
 }
-
 function normalize(s){
- return s.toLowerCase().replace(/[ًٌٍَُِّْـ\s.,،!؟/-]/g,"").trim();
+ return s.toLocaleLowerCase("ar")
+ .replace(/[ًٌٍَُِّْـ]/g,"")
+ .replace(/[أإآ]/g,"ا")
+ .replace(/\s+/g," ").trim();
 }
-
-function checkAnswer(){
- const value = normalize(document.getElementById("answer").value);
- const correct = STAGES[stage].answers.some(a => normalize(a) === value);
+function check(){
+ const value=normalize($("answerInput").value);
  if(!value){
-   document.getElementById("feedback").textContent = "اكتبي إجابتك أولًا.";
-   return;
+  $("feedback").textContent="اكتبي إجابتك أولًا.";
+  $("feedback").className="feedback bad";
+  beep(180,.12,"triangle");return;
  }
- if(!correct){
-   document.getElementById("feedback").textContent = "الإجابة غير صحيحة. راجعي الأدلة وحاولي مرة أخرى.";
-   return;
+ const ok=stages[stage].answers.some(a=>normalize(a)===value);
+ if(!ok){
+  $("feedback").textContent="الإجابة غير مطابقة للسجل. راجعي الدليل وحاولي مرة ثانية.";
+  $("feedback").className="feedback bad";
+  beep(180,.14,"triangle");return;
  }
- stage++;
- localStorage.setItem("case1030stage",stage);
- unlockAt = Date.now() + DELAY;
- localStorage.setItem("case1030unlock",unlockAt);
+ if(!solved.includes(stage))solved.push(stage);
+ $("feedback").textContent="تم التحقق من الدليل. تمت إضافة الملف إلى لوحة الأدلة.";
+ $("feedback").className="feedback good";
+ beep(760,.13);setTimeout(()=>beep(960,.17),110);
+ $("checkBtn").disabled=true;
+ $("answerInput").disabled=true;
+ $("hintBtn").disabled=true;
+ renderEvidence();
+ if(stage<stages.length-1){
+  $("waitBox").classList.remove("hidden");
+  let left=8;
+  $("waitText").textContent=`جاري فك تشفير الملف التالي… ${left} ثوانٍ`;
+  timer=setInterval(()=>{
+   left--;
+   if(left<=0){clearInterval(timer);stage++;renderStage();}
+   else $("waitText").textContent=`جاري فك تشفير الملف التالي… ${left} ثوانٍ`;
+  },1000);
+ }else{
+  setTimeout(()=>{
+   $("gameCard").classList.add("hidden");
+   $("evidenceCard").classList.add("hidden");
+   $("finalCard").classList.remove("hidden");
+   beep(660,.2);
+  },850);
+ }
+}
+function renderEvidence(){
+ $("evidenceCard").classList.remove("hidden");
+ $("evidenceGrid").innerHTML=solved.map(i=>`<button class="evidence" data-stage="${i}"><span class="mini">${["▣","✉","✧","⌕"][i]}</span><b>${String(i+1).padStart(2,"0")} · ${stages[i].title}</b><small>تمت المراجعة · اضغطي لعرض الدليل</small></button>`).join("");
+ $("evidenceGrid").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+  const i=Number(b.dataset.stage);
+  alert(stages[i].title+"\n\n"+stages[i].html.replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim());
+ }));
+}
+$("startBtn").addEventListener("click",()=>{
+ beep(420,.1);
+ $("intro").classList.add("hidden");
+ $("gameCard").classList.remove("hidden");
  renderStage();
-}
-
-function tick(){
- clearInterval(timer);
- function update(){
-   const now = Date.now();
-   const game = document.getElementById("game");
-   if(stage >= STAGES.length){
-     const left = FINAL_DATE - now;
-     if(left <= 0){ showFinal(); return; }
-     document.getElementById("countdown").textContent = format(left);
-     return;
-   }
-   const left = unlockAt - now;
-   if(left <= 0){
-     renderStage();
-     return;
-   }
-   document.getElementById("countdown").textContent = format(left);
+ window.scrollTo({top:$("gameCard").offsetTop-12,behavior:"smooth"});
+});
+$("checkBtn").addEventListener("click",check);
+$("answerInput").addEventListener("keydown",e=>{if(e.key==="Enter")check();});
+$("hintBtn").addEventListener("click",()=>{
+ $("feedback").textContent="تلميح: "+stages[stage].hint;
+ $("feedback").className="feedback";
+ beep(390,.1);
+});
+$("soundBtn").addEventListener("click",async()=>{
+ soundOn=!soundOn;
+ $("soundBtn").textContent=soundOn?"♫ الصوت: تشغيل":"♫ الصوت: إيقاف";
+ if(soundOn){
+  try{
+   audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
+   if(audioCtx.state==="suspended")await audioCtx.resume();
+   beep(520,.12);
+  }catch(e){}
  }
- update();
- timer = setInterval(update,1000);
-}
-
-function format(ms){
- const sec = Math.max(0,Math.floor(ms/1000));
- const d = Math.floor(sec/86400);
- const h = Math.floor(sec%86400/3600);
- const m = Math.floor(sec%3600/60);
- const s = sec%60;
- return [d+"d",h+"h",m+"m",s+"s"].join(" : ");
-}
-
-function showFinal(){
- clearInterval(timer);
- document.getElementById("intro").classList.add("hidden");
- document.getElementById("game").classList.add("hidden");
- document.getElementById("final").classList.remove("hidden");
- document.querySelector("header .status").textContent = "● CASE STATUS: CLOSED";
-}
-
-function revealLetter(){
- document.getElementById("letter").classList.remove("hidden");
-}
-
-if(Date.now() >= FINAL_DATE && Number(localStorage.getItem("case1030stage")||0) >= STAGES.length){
- document.getElementById("intro").querySelector("button").textContent = "استكمال التحقيق";
-}
+});
+$("restartBtn").addEventListener("click",()=>{
+ clearInterval(timer);stage=0;solved=[];
+ $("finalCard").classList.add("hidden");
+ $("intro").classList.remove("hidden");
+ $("gameCard").classList.add("hidden");
+ $("evidenceCard").classList.add("hidden");
+ updateStats();
+ window.scrollTo({top:0,behavior:"smooth"});
+});
+updateStats();
 </script>
 </body>
 </html>
