@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -50,7 +51,7 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:#777b8c;font-size
 <section class="card" id="musicCard">
   <div class="card-head"><h2>الموسيقى المصاحبة للقضية</h2><span class="case-no">SOUNDTRACK</span></div>
   <p style="color:#c0c1cb;font-size:12px;line-height:1.8">إذا ما اشتغلت تلقائيًا، اضغطي تشغيل من المشغّل.</p>
-  <div id="musicPlayer" style="width:100%;max-width:560px;margin:auto;overflow:hidden;border-radius:8px;background:#090a10;min-height:200px"></div>
+  <div id="musicPlayer" style="width:100%;max-width:560px;margin:auto;overflow:hidden;border-radius:8px;background:#090a10;min-height:220px"></div>
   <p style="font-size:11px;color:var(--muted);margin-bottom:0">إذا تعذّر التشغيل داخل الصفحة، <a href="https://music.youtube.com/watch?v=KdbtTsqbhp0&si=WTQfpJIQkjvO63lc" target="_blank" rel="noopener" style="color:var(--red2)">افتحي الأغنية في YouTube Music</a>.</p>
 </section>
 
@@ -115,19 +116,27 @@ let stage=0, solved=[], timer=null, soundOn=true, audioCtx=null;
 const $=id=>document.getElementById(id);
 const musicVideoId="KdbtTsqbhp0";
 
-function startMusic(){
- if($("ytMusicFrame"))return;
- const f=document.createElement("iframe");
- f.id="ytMusicFrame";
- f.title="مشغّل الأغنية";
- f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";
- f.referrerPolicy="strict-origin-when-cross-origin";
- f.src=`https://www.youtube.com/embed/${musicVideoId}?autoplay=1&loop=1&playlist=${musicVideoId}&controls=1&playsinline=1`;
- f.width="100%";
- f.height="220";
- f.style.border="0";
- f.style.display="block";
- $("musicPlayer").appendChild(f);
+function startMusic(autoplay=false){
+ const player=$("musicPlayer");
+ let frame=$("ytMusicFrame");
+
+ if(!frame){
+  frame=document.createElement("iframe");
+  frame.id="ytMusicFrame";
+  frame.title="빼앗고도 웃지 못하는 사람들 — 정세린";
+  frame.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";
+  frame.referrerPolicy="strict-origin-when-cross-origin";
+  frame.width="100%";
+  frame.height="220";
+  frame.style.border="0";
+  frame.style.display="block";
+  player.appendChild(frame);
+ }
+
+ frame.src="https://www.youtube.com/embed/"+musicVideoId+
+  "?autoplay="+(autoplay?"1":"0")+
+  "&loop=1&playlist="+musicVideoId+
+  "&controls=1&playsinline=1";
 }
 
 function beep(freq=520,duration=.09,type="sine"){
@@ -232,7 +241,7 @@ function renderEvidence(){
 }
 
 $("startBtn").addEventListener("click",()=>{
- startMusic();
+ startMusic(true);
  beep(420,.1);
  $("intro").classList.add("hidden");
  $("gameCard").classList.remove("hidden");
@@ -273,7 +282,7 @@ $("restartBtn").addEventListener("click",()=>{
 });
 
 updateStats();
-window.addEventListener("load",()=>{startMusic()});
+window.addEventListener("load",()=>startMusic(false));
 </script>
 </body>
 </html>
