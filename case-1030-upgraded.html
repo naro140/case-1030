@@ -40,14 +40,20 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:#777b8c;font-size
 </header>
 
 <section class="hero">
-  <div class="eyebrow">UNSOLVED CASE / 01 , made with ᰔ by: IG@naro._.140</div>
+  <div class="eyebrow">UNSOLVED CASE / 01 . made with ᰔ by: IG@naro._.140</div>
   <h1>بعض الأمنيات<br><span>لا يجب أن تتحقق.</span></h1>
   <p>اختفى كل شيء خلف رسالة واحدة. صداقة قديمة، تطبيق مجهول، وأمنية لم يكن من المفترض أن تُقال. أنتِ المحققة الآن؛ اجمعي الأدلة، اربطي التواريخ، واكتشفي ما الذي حدث فعلًا.</p>
   <div class="warning"><div>⚠</div><div><b>تنبيه من أرشيف القضية</b><p>بعض الملفات غير مكتملة. لا تثقي بأول رواية تسمعينها؛ كل دليل قد يغيّر معنى الدليل الذي قبله.</p></div></div>
   <div class="stats"><div class="stat"><small>رقم القضية</small><b>1030-A</b></div><div class="stat"><small>الحالة</small><b id="statusText">مفتوحة للتحقيق</b></div><div class="stat"><small>الأدلة المكتشفة</small><b id="progressText">0 / 7</b></div></div>
 </section>
 
-<div id="musicPlayer" aria-hidden="true" style="position:fixed;width:1px;height:1px;overflow:hidden;opacity:.01;pointer-events:none;left:0;bottom:0"></div>
+<section class="card" id="musicCard">
+  <div class="card-head"><h2>الموسيقى المصاحبة للقضية</h2><span class="case-no">SOUNDTRACK</span></div>
+  <p style="color:#c0c1cb;font-size:12px;line-height:1.8">إذا ما اشتغلت تلقائيًا، اضغطي تشغيل من المشغّل.</p>
+  <div id="musicPlayer" style="width:100%;max-width:560px;margin:auto;overflow:hidden;border-radius:8px;background:#090a10;min-height:200px"></div>
+  <p style="font-size:11px;color:var(--muted);margin-bottom:0">إذا تعذّر التشغيل داخل الصفحة، <a href="https://music.youtube.com/watch?v=KdbtTsqbhp0&si=WTQfpJIQkjvO63lc" target="_blank" rel="noopener" style="color:var(--red2)">افتحي الأغنية في YouTube Music</a>.</p>
+</section>
+
 <section class="card" id="intro">
   <div class="card-head"><h2>ابدئي التحقيق</h2><span class="case-no">ACCESS GRANTED</span></div>
   <p style="color:#c0c1cb;line-height:1.9;font-size:14px">بدأت القضية برسالة ناقصة، ثم ظهرت سجلات متناقضة من تطبيق غامض اسمه Wish.exe. هناك سبعة ملفات، وكل ملف يكشف جزءًا جديدًا من الحكاية. لا تتسرعي بالحكم؛ قد يكون الدليل الأول صحيحًا لكنه لا يحكي الحقيقة كاملة. <b style="color:#ff8a9b">كل ما تحتاجينه موجود داخل الملف.</b></p>
@@ -87,8 +93,10 @@ footer{border-top:1px solid var(--line);padding-top:18px;color:#777b8c;font-size
 كل عام وإحنا بخير يا موكا، وعسى نعيش ذكريات أكثر وأحلى مع بعض.</p><div class="sign">— من الزعيمة نارو</div></div>
   <button class="btn secondary" id="restartBtn">إعادة التحقيق من البداية</button>
 </section>
-<footer>CASE 1030 ·  made with ᰔ by: IG@naro._.140 ملف خيالي صُمّم كتجربة تفاعلية خاصة · لا توجد بيانات تُرسل إلى أي جهة</footer>
+
+<footer>CASE 1030 · made with ᰔ by: IG@naro._.140 ملف خيالي صُمّم كتجربة تفاعلية خاصة · لا توجد بيانات تُرسل إلى أي جهة</footer>
 </div>
+
 <script>
 const stages = [
  {title:"سجل التطبيق",label:"رمز الوصول",placeholder:"اكتبي الرمز...",hint:"التاريخ المكتوب على ملف القضية: 30 أكتوبر. جرّبي كتابته بالأرقام.",answers:["1030","30","3010","30 اكتوبر","30 أكتوبر"],html:`<div class="clue-title"><div class="clue-icon">▣</div><div><h3>ملف النظام — Wish.exe</h3><small>آخر تحديث: 30 / 10 · المصدر: جهاز غير معروف</small></div></div><div class="paper"><p class="scribble">“كل أمنية تُسجّل. كل وعد يُحفظ. لا يمكن حذف ما تم طلبه.”</p><p>ظهر اسم التطبيق لأول مرة في سجل قديم، لكن كل البيانات الشخصية ممسوحة. بقي تاريخ واحد واضحًا: 30 / 10. أدخلي الرمز لفتح الملف التالي.</p></div><div class="quote">ملاحظة المحقق: في سجل المستخدمين حرفان فقط: <b>N</b> و <b>M</b>. لا يوجد تفسير لعلاقتهما بالقضية.</div>`},
@@ -102,20 +110,168 @@ const stages = [
  {title:"الشاهد الصامت",label:"ما الذي كان يجب أن يحدث بدل الافتراض؟",placeholder:"اكتبي الإجابة...",hint:"التحدث بصراحة وطرح سؤال قبل إصدار الحكم.",answers:["السؤال","السؤال بصراحة","المصارحة","التواصل","الكلام","التفاهم","نسأل","نسأل بعض","سؤال صريح","الحوار"],html:`<div class="clue-title"><div class="clue-icon">⌕</div><div><h3>ملاحظة بلا توقيع</h3><small>وُجدت خلف صورة قديمة</small></div></div><div class="paper"><p>“كل وحدة كانت تنتظر الثانية تفهمها من دون ما تتكلم. ومع الوقت صار الصمت دليلًا في نظر كل وحدة، رغم أنه ما كان يشرح أي شيء.”</p><p>الملاحظة لا تتهم أي طرف. لكنها تكشف أن الحقيقة لم تُسأل عنها مباشرة.</p></div><div class="quote">ما الشيء الذي كان ممكنًا أن يمنع سوء الفهم من التوسع؟</div>`},
  {title:"الحقيقة الأخيرة",label:"ما الذي يستحق أن يأتي قبل الحكم؟",placeholder:"اكتبي الإجابة...",hint:"الاستماع ومحاولة فهم الطرف الآخر قبل الحكم عليه.",answers:["الفهم","التفاهم","نفهم بعض","الاستماع","الحقيقة","السؤال","المصارحة","نفهم","نسمع بعض"],html:`<div class="clue-title"><div class="clue-icon">▣</div><div><h3>الملف الختامي — إعادة بناء الأحداث</h3><small>تم فك تشفير آخر مستند</small></div></div><div class="paper"><p>“الغياب حدث فعلًا. والتقصير حدث فعلًا. لكن تفسير كل هذا على أنه نهاية الصداقة لم يكن الحقيقة كاملة. كانت هناك ظروف، وكلام لم يُقل، وهدية بقيت مرتبطة بمناسبة لم تسر كما خُطط لها.”</p><p>لم تكن القضية عن شخص شرير أو خيانة مخفية؛ كانت عن سوء فهم تضخم لأن الأسئلة بقيت بلا إجابة.</p></div><div class="quote">آخر سؤال: ما الذي يستحق أن يأتي قبل الحكم على شخص عزيز؟</div>`}
 ];
+
 let stage=0, solved=[], timer=null, soundOn=true, audioCtx=null;
 const $=id=>document.getElementById(id);
 const musicVideoId="KdbtTsqbhp0";
-function startMusic(){if($("ytMusicFrame"))return;const f=document.createElement("iframe");f.id="ytMusicFrame";f.title="Background music";f.allow="autoplay; encrypted-media";f.src=`https://www.youtube.com/embed/${musicVideoId}?autoplay=1&loop=1&playlist=${musicVideoId}&controls=0&playsinline=1`;f.width="1";f.height="1";f.style.border="0";$("musicPlayer").appendChild(f)}
-function beep(freq=520,duration=.09,type="sine"){if(!soundOn)return;try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")audioCtx.resume();const o=audioCtx.createOscillator(),g=audioCtx.createGain();o.type=type;o.frequency.value=freq;g.gain.setValueAtTime(.045,audioCtx.currentTime);g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);o.connect(g);g.connect(audioCtx.destination);o.start();o.stop(audioCtx.currentTime+duration)}catch(e){}}
-function updateStats(){$("progressText").textContent=`${solved.length} / ${stages.length}`;$("progressBar").style.width=`${solved.length/stages.length*100}%`;$("statusText").textContent=solved.length===stages.length?"تم حل القضية":"مفتوحة للتحقيق"}
-function renderStage(){clearInterval(timer);const s=stages[stage];$("stageHeading").textContent=`الدليل ${String(stage+1).padStart(2,"0")} — ${s.title}`;$("stageNumber").textContent=`EVIDENCE ${String(stage+1).padStart(2,"0")}`;$("stageContent").innerHTML=s.html;$("answerLabel").textContent=s.label;$("answerInput").value="";$("answerInput").placeholder=s.placeholder;$("feedback").textContent="";$("feedback").className="feedback";$("waitBox").classList.add("hidden");$("checkBtn").disabled=false;$("answerInput").disabled=false;$("hintBtn").disabled=false;updateStats();$("answerInput").focus({preventScroll:true})}
-function normalize(s){return s.toLocaleLowerCase("ar").replace(/[ًٌٍَُِّْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/\s+/g," ").trim()}
-function check(){const value=normalize($("answerInput").value);if(!value){$("feedback").textContent="اكتبي إجابتك أولًا."; $("feedback").className="feedback bad";beep(180,.12,"triangle");return}const ok=stages[stage].answers.some(a=>normalize(a)===value);if(!ok){$("feedback").textContent="الإجابة غير مطابقة للسجل. راجعي الدليل وحاولي مرة ثانية."; $("feedback").className="feedback bad";beep(180,.14,"triangle");return}if(!solved.includes(stage))solved.push(stage);$("feedback").textContent="تم التحقق من الدليل. تمت إضافة الملف إلى لوحة الأدلة."; $("feedback").className="feedback good";beep(760,.13);setTimeout(()=>beep(960,.17),110);$("checkBtn").disabled=true;$("answerInput").disabled=true;$("hintBtn").disabled=true;renderEvidence();if(stage<stages.length-1){$("waitBox").classList.remove("hidden");let left=8;$("waitText").textContent=`جاري فك تشفير الملف التالي… ${left} ثوانٍ`;timer=setInterval(()=>{left--;if(left<=0){clearInterval(timer);stage++;renderStage()}else $("waitText").textContent=`جاري فك تشفير الملف التالي… ${left} ثوانٍ`},1000)}else{setTimeout(()=>{$("gameCard").classList.add("hidden");$("evidenceCard").classList.add("hidden");$("finalCard").classList.remove("hidden");beep(660,.2)},850)}}
-function renderEvidence(){$("evidenceCard").classList.remove("hidden");$("evidenceGrid").innerHTML=solved.map(i=>`<button class="evidence" data-stage="${i}"><span class="mini">${["▣","✉","✧","⌕"][i]}</span><b>${String(i+1).padStart(2,"0")} · ${stages[i].title}</b><small>تمت المراجعة · اضغطي لعرض الدليل</small></button>`).join("");$("evidenceGrid").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{const i=Number(b.dataset.stage);alert(stages[i].title+"\n\n"+stages[i].html.replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim())}))}
-$("startBtn").addEventListener("click",()=>{startMusic();beep(420,.1);$("intro").classList.add("hidden");$("gameCard").classList.remove("hidden");renderStage();window.scrollTo({top:$("gameCard").offsetTop-12,behavior:"smooth"})});
-$("checkBtn").addEventListener("click",check);$("answerInput").addEventListener("keydown",e=>{if(e.key==="Enter")check()});$("hintBtn").addEventListener("click",()=>{$("feedback").textContent="تلميح: "+stages[stage].hint;$("feedback").className="feedback";beep(390,.1)});
-$("soundBtn").addEventListener("click",async()=>{soundOn=!soundOn;$("soundBtn").textContent=soundOn?"♫ الصوت: تشغيل":"♫ الصوت: إيقاف";if(soundOn){try{audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==="suspended")await audioCtx.resume();beep(520,.12)}catch(e){}}});
-$("restartBtn").addEventListener("click",()=>{clearInterval(timer);stage=0;solved=[];$("finalCard").classList.add("hidden");$("intro").classList.remove("hidden");$("gameCard").classList.add("hidden");$("evidenceCard").classList.add("hidden");updateStats();window.scrollTo({top:0,behavior:"smooth"})});
+
+function startMusic(){
+ if($("ytMusicFrame"))return;
+ const f=document.createElement("iframe");
+ f.id="ytMusicFrame";
+ f.title="مشغّل الأغنية";
+ f.allow="autoplay; encrypted-media; picture-in-picture; fullscreen";
+ f.referrerPolicy="strict-origin-when-cross-origin";
+ f.src=`https://www.youtube.com/embed/${musicVideoId}?autoplay=1&loop=1&playlist=${musicVideoId}&controls=1&playsinline=1`;
+ f.width="100%";
+ f.height="220";
+ f.style.border="0";
+ f.style.display="block";
+ $("musicPlayer").appendChild(f);
+}
+
+function beep(freq=520,duration=.09,type="sine"){
+ if(!soundOn)return;
+ try{
+  audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
+  if(audioCtx.state==="suspended")audioCtx.resume();
+  const o=audioCtx.createOscillator(),g=audioCtx.createGain();
+  o.type=type;
+  o.frequency.value=freq;
+  g.gain.setValueAtTime(.045,audioCtx.currentTime);
+  g.gain.exponentialRampToValueAtTime(.001,audioCtx.currentTime+duration);
+  o.connect(g);g.connect(audioCtx.destination);
+  o.start();o.stop(audioCtx.currentTime+duration);
+ }catch(e){}
+}
+
+function updateStats(){
+ $("progressText").textContent=`${solved.length} / ${stages.length}`;
+ $("progressBar").style.width=`${solved.length/stages.length*100}%`;
+ $("statusText").textContent=solved.length===stages.length?"تم حل القضية":"مفتوحة للتحقيق";
+}
+
+function renderStage(){
+ clearInterval(timer);
+ const s=stages[stage];
+ $("stageHeading").textContent=`الدليل ${String(stage+1).padStart(2,"0")} — ${s.title}`;
+ $("stageNumber").textContent=`EVIDENCE ${String(stage+1).padStart(2,"0")}`;
+ $("stageContent").innerHTML=s.html;
+ $("answerLabel").textContent=s.label;
+ $("answerInput").value="";
+ $("answerInput").placeholder=s.placeholder;
+ $("feedback").textContent="";
+ $("feedback").className="feedback";
+ $("waitBox").classList.add("hidden");
+ $("checkBtn").disabled=false;
+ $("answerInput").disabled=false;
+ $("hintBtn").disabled=false;
+ updateStats();
+ $("answerInput").focus({preventScroll:true});
+}
+
+function normalize(s){
+ return s.toLocaleLowerCase("ar").replace(/[ًٌٍَُِّْـ]/g,"").replace(/[أإآ]/g,"ا").replace(/\s+/g," ").trim();
+}
+
+function check(){
+ const value=normalize($("answerInput").value);
+ if(!value){
+  $("feedback").textContent="اكتبي إجابتك أولًا.";
+  $("feedback").className="feedback bad";
+  beep(180,.12,"triangle");
+  return;
+ }
+ const ok=stages[stage].answers.some(a=>normalize(a)===value);
+ if(!ok){
+  $("feedback").textContent="الإجابة غير مطابقة للسجل. راجعي الدليل وحاولي مرة ثانية.";
+  $("feedback").className="feedback bad";
+  beep(180,.14,"triangle");
+  return;
+ }
+ if(!solved.includes(stage))solved.push(stage);
+ $("feedback").textContent="تم التحقق من الدليل. تمت إضافة الملف إلى لوحة الأدلة.";
+ $("feedback").className="feedback good";
+ beep(760,.13);
+ setTimeout(()=>beep(960,.17),110);
+ $("checkBtn").disabled=true;
+ $("answerInput").disabled=true;
+ $("hintBtn").disabled=true;
+ renderEvidence();
+ if(stage<stages.length-1){
+  $("waitBox").classList.remove("hidden");
+  let left=8;
+  $("waitText").textContent=`جاري فك تشفير الملف التالي… ${left} ثوانٍ`;
+  timer=setInterval(()=>{
+   left--;
+   if(left<=0){
+    clearInterval(timer);
+    stage++;
+    renderStage();
+   }else{
+    $("waitText").textContent=`جاري فك تشفير الملف التالي… ${left} ثوانٍ`;
+   }
+  },1000);
+ }else{
+  setTimeout(()=>{
+   $("gameCard").classList.add("hidden");
+   $("evidenceCard").classList.add("hidden");
+   $("finalCard").classList.remove("hidden");
+   beep(660,.2);
+  },850);
+ }
+}
+
+function renderEvidence(){
+ $("evidenceCard").classList.remove("hidden");
+ $("evidenceGrid").innerHTML=solved.map(i=>`<button class="evidence" data-stage="${i}"><span class="mini">${["▣","✉","✧","⌕"][i]}</span><b>${String(i+1).padStart(2,"0")} · ${stages[i].title}</b><small>تمت المراجعة · اضغطي لعرض الدليل</small></button>`).join("");
+ $("evidenceGrid").querySelectorAll("button").forEach(b=>b.addEventListener("click",()=>{
+  const i=Number(b.dataset.stage);
+  alert(stages[i].title+"\n\n"+stages[i].html.replace(/<[^>]*>/g," ").replace(/\s+/g," ").trim());
+ }));
+}
+
+$("startBtn").addEventListener("click",()=>{
+ startMusic();
+ beep(420,.1);
+ $("intro").classList.add("hidden");
+ $("gameCard").classList.remove("hidden");
+ renderStage();
+ window.scrollTo({top:$("gameCard").offsetTop-12,behavior:"smooth"});
+});
+
+$("checkBtn").addEventListener("click",check);
+$("answerInput").addEventListener("keydown",e=>{if(e.key==="Enter")check()});
+$("hintBtn").addEventListener("click",()=>{
+ $("feedback").textContent="تلميح: "+stages[stage].hint;
+ $("feedback").className="feedback";
+ beep(390,.1);
+});
+
+$("soundBtn").addEventListener("click",async()=>{
+ soundOn=!soundOn;
+ $("soundBtn").textContent=soundOn?"♫ الصوت: تشغيل":"♫ الصوت: إيقاف";
+ if(soundOn){
+  try{
+   audioCtx=audioCtx||new(window.AudioContext||window.webkitAudioContext)();
+   if(audioCtx.state==="suspended")await audioCtx.resume();
+   beep(520,.12);
+  }catch(e){}
+ }
+});
+
+$("restartBtn").addEventListener("click",()=>{
+ clearInterval(timer);
+ stage=0;
+ solved=[];
+ $("finalCard").classList.add("hidden");
+ $("intro").classList.remove("hidden");
+ $("gameCard").classList.add("hidden");
+ $("evidenceCard").classList.add("hidden");
+ updateStats();
+ window.scrollTo({top:0,behavior:"smooth"});
+});
+
 updateStats();
 window.addEventListener("load",()=>{startMusic()});
 </script>
